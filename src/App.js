@@ -1,15 +1,27 @@
 import React, {Component} from "react";
-import ColourSelector from "./ColourSelector";
 import Canvas from "./Canvas";
+import TitleSelector from "./TitleSelector";
 
 class App extends Component {
+    state = {
+        text: "Welcome To Your Drawing Pad"
+    }
+
+    onTextSelectorChange = (text) => {
+        this.setState({ text });
+    }
+
+
     render() {
+        const { text } = this.state;
         return (
             <div>
-                <h1>Welcome to your drawing pad</h1>
-                <Canvas hex="#f4424b" />
-                <ColourSelector hex="#ffffff" />
-                <ColourSelector />
+                <h1>{text}</h1>
+                <TitleSelector 
+                    text={text} 
+                    onTextSelectorChange={this.onTextSelectorChange}  
+                />
+                <Canvas />
             </div>
         )
     }
